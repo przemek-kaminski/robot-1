@@ -1,14 +1,19 @@
 makerbit.onIrButton(IrButton.Right, IrButtonAction.Released, function () {
-    DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBL, Color.OFF)
+    DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBR, Color.OFF)
     DFRobotMaqueenPlus.mototRun(Motors.ALL, Dir.CW, 200)
 })
 makerbit.onIrButton(IrButton.Left, IrButtonAction.Released, function () {
-    DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBR, Color.OFF)
+    DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBL, Color.OFF)
     DFRobotMaqueenPlus.mototRun(Motors.ALL, Dir.CW, 200)
 })
 makerbit.onIrButton(IrButton.Number_1, IrButtonAction.Pressed, function () {
     if (policja == 0) {
         policja += 1
+        if (policja == 1) {
+            for (let index = 0; index < 100; index++) {
+                music.playMelody("A G A G A G A G ", 200)
+            }
+        }
     } else {
         DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBA, Color.OFF)
         music.stopAllSounds()
@@ -16,9 +21,9 @@ makerbit.onIrButton(IrButton.Number_1, IrButtonAction.Pressed, function () {
     }
 })
 makerbit.onIrButton(IrButton.Left, IrButtonAction.Pressed, function () {
-    DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBR, Color.RED)
-    DFRobotMaqueenPlus.mototRun(Motors.M1, Dir.CW, 200)
-    DFRobotMaqueenPlus.mototRun(Motors.M2, Dir.CW, 0)
+    DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBL, Color.RED)
+    DFRobotMaqueenPlus.mototRun(Motors.M2, Dir.CW, 200)
+    DFRobotMaqueenPlus.mototRun(Motors.M1, Dir.CW, 0)
 })
 makerbit.onIrButton(IrButton.Down, IrButtonAction.Pressed, function () {
     DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBA, Color.RED)
@@ -34,9 +39,9 @@ makerbit.onIrButton(IrButton.Up, IrButtonAction.Pressed, function () {
     DFRobotMaqueenPlus.mototRun(Motors.ALL, Dir.CW, 200)
 })
 makerbit.onIrButton(IrButton.Right, IrButtonAction.Pressed, function () {
-    DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBL, Color.RED)
-    DFRobotMaqueenPlus.mototRun(Motors.M2, Dir.CW, 200)
-    DFRobotMaqueenPlus.mototRun(Motors.M1, Dir.CW, 0)
+    DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBR, Color.RED)
+    DFRobotMaqueenPlus.mototRun(Motors.M1, Dir.CW, 200)
+    DFRobotMaqueenPlus.mototRun(Motors.M2, Dir.CW, 0)
 })
 makerbit.onIrButton(IrButton.Ok, IrButtonAction.Pressed, function () {
     DFRobotMaqueenPlus.mototRun(Motors.ALL, Dir.CW, 0)
@@ -62,16 +67,15 @@ policja = 0
 let szybkość = 200
 makerbit.connectIrReceiver(DigitalPin.P16, IrProtocol.NEC)
 loops.everyInterval(1, function () {
+	
+})
+loops.everyInterval(1, function () {
     if (policja == 1) {
         DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBL, Color.RED)
         DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBR, Color.BLUE)
         basic.pause(99)
         DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBL, Color.BLUE)
         DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBR, Color.RED)
-    }
-})
-loops.everyInterval(1, function () {
-    if (policja == 1) {
-        music.playMelody("A G A G A G A G ", 200)
+        basic.pause(99)
     }
 })
