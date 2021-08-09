@@ -24,5 +24,8 @@
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "blocksprj"
+    "preferredEditor": "blocksprj",
+    "disablesVariants": [
+        "mbdal"
+    ]
 }

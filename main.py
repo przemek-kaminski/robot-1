@@ -1,7 +1,7 @@
 def on_ir_button_right_released():
     if blokada == 1:
         DFRobotMaqueenPlus.set_rgb_light(RGBLight.RGBR, Color.OFF)
-        DFRobotMaqueenPlus.motot_run(Motors.ALL, Dir.CW, 200)
+        DFRobotMaqueenPlus.motot_run(Motors.ALL, Dir.CW, 201)
 makerbit.on_ir_button(IrButton.RIGHT,
     IrButtonAction.RELEASED,
     on_ir_button_right_released)
@@ -121,10 +121,8 @@ makerbit.on_ir_button(IrButton.OK, IrButtonAction.PRESSED, on_ir_button_ok_press
 
 policja = 0
 blokada = 0
-blokada = 0
-serial.write_number(DFRobotMaqueenPlus.ultra_sonic(PIN.P1, PIN.P2))
-serial.write_line("")
 która_strona = 0
+blokada = 0
 for wiersz in range(5):
     for index11 in range(5):
         basic.pause(100)
